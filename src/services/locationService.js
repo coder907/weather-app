@@ -3,6 +3,7 @@ import Location from '../models/Location';
 
 const locationService = {
   requestLocation,
+  searchCities,
   countryCodeToName,
 }
 
@@ -20,7 +21,12 @@ function requestLocation() {
         response => response.json()
       )
       .then(obj => {
-        const location = new Location(obj.country_code, obj.city);
+        const location = new Location(
+          undefined,
+          obj.country_code,
+          undefined,
+          obj.city
+        );
         // logger.logPretty(location);
         resolve(location);
       })
@@ -30,11 +36,65 @@ function requestLocation() {
   });
 }
 
-function countryCodeToName(countryCode) {
-  return countryMap[countryCode.toUpperCase()] || countryCode;
+let cities;
+
+function searchCities(filter, callback) {
+  if (!cities) {
+    fetch(`data/cities.json`)
+      .then(
+        response => response.json()
+      )
+      .then(obj => {
+        cities = obj;
+        searchCities(filter, callback);
+      });
+  } else {
+    callback(filterCities(filter));
+  }
 }
 
-const countryMap = {
+function filterCities(filter) {
+  let limit = 0;
+
+  const filtered = cities.filter(city => 
+    city.name.toLowerCase().startsWith(filter.toLowerCase()) && limit++ < 5
+  );
+
+  const mapped = filtered.map(city => new Location(
+    city.geonameid,
+    countryNameToCode(city.country),
+    city.subcountry,
+    city.name,
+  ));
+
+  return mapped;
+}
+
+function countryCodeToName(code) {
+  code = code.toUpperCase();
+  return countryCodeMap[code] || code;
+}
+
+function countryNameToCode(name) {
+  ensureCountryNameMap();
+  return countryNameMap[name.toLowerCase()] || name;
+}
+
+function ensureCountryNameMap() {
+  if (!countryNameMap) {
+    countryNameMap = {};
+    const codes = Object.keys(countryCodeMap);
+
+    for (let i = 0; i < codes.length; i++) {
+      const name = countryCodeMap[codes[i]].toLowerCase();
+      countryNameMap[name] = codes[i];
+    }
+  }
+}
+
+let countryNameMap;
+
+const countryCodeMap = {
   "AD": "Andorra",
   "AE": "United Arab Emirates",
   "AF": "Afghanistan",

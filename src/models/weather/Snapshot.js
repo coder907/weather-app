@@ -9,7 +9,9 @@ export default class Snapshot {
     this.timestamp = obj.dt * 1000;
 
     this.location = new Location(
+      obj.id,
       obj.sys.country,
+      undefined,
       obj.name,
     );
 

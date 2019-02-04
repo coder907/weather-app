@@ -1,56 +1,49 @@
 import React, { Component } from 'react';
 
+import AsyncSelect from 'react-select/lib/Async';
+
+import locationService from '../services/locationService';
+import SearchItem from './SearchItem';
+
 export default class Search extends Component {
 
-  constructor(props) {
-    super(props);
-    this.inputRef = React.createRef();
+  state = {
+    inputValue: '',
   }
 
-  componentDidMount() {
-    this.inputRef.current.focus();
+  loadOptions = (inputValue, callback) => {
+    locationService.searchCities(inputValue, callback);
   }
 
-  __onClick = (e) => {
-    this.__onShow();
-  }
-
-  __onKeyUp = (e) => {
-    if (e.key.toLowerCase() === 'enter') {
-      this.__onShow();
+  noOptionsMessage = (params) => {
+    if (params.inputValue === '') {
+      return 'Start typing ...'
+    } else {
+      return 'No cities found.';
     }
   }
 
-  __onShow = () => {
-    this.props.onShow(this.__inputValue());
-  }
+  onInputChange = (value, params) => {
+    const action = params.action;
 
-  __inputValue = () => {
-    const input = this.inputRef.current;
-
-    if (input) {
-      return input.value;
-    } else {
-      return '';
+    if (action === 'input-change') {
+      this.setState({inputValue: value});
     }
   }
 
   render() {
     return (
       <div className="search-container">
-        <input
-          className="search-input"
-          type="text"
+        {/* <pre>{this.state.inputValue}</pre> */}
+        <AsyncSelect
+          loadOptions={this.loadOptions}
+          components={{ Option: SearchItem }}
           placeholder="Enter city ..."
-          spellCheck="false"
-          onKeyUp={this.__onKeyUp}
-          ref={this.inputRef}
+          noOptionsMessage={this.noOptionsMessage}
+          autoFocus={true}
+          inputValue={this.state.inputValue}
+          onInputChange={this.onInputChange}
         />
-        <button
-          className="search-button"
-          type="button"
-          onClick={this.__onClick}
-        >Show</button>
       </div>
     );
   }

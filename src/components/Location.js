@@ -1,10 +1,8 @@
 import React from 'react';
 
-import locationService from '../services/locationService';
-
 export default function Location(props) {
   const location = props.location;
-  const countryName = locationService.countryCodeToName(location.countryCode);
+  const countryName = location.countryName();
 
   return (
     <div className="condition-flexbox">
