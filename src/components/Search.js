@@ -40,7 +40,7 @@ export default class Search extends Component {
 
       this.selectRef.blur();
       this.selectRef.focus();
-      
+
       this.scheduleChange(location);
     }
   }

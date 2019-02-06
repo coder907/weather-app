@@ -1,5 +1,4 @@
 import Snapshot from '../models/weather/Snapshot';
-// import logger from '../utils/logger';
 
 const weatherService = {
   requestData,
@@ -11,11 +10,11 @@ const urlBase = 'https://api.openweathermap.org/data/2.5/weather';
 const appId = '3ccbdea52230974079124e584dbbbb86';
 
 function urlLocation(location) {
-  return `${urlBase}?q=${location}&appid=${appId}`
+  return `${urlBase}?q=${location}&appid=${appId}`;
 }
 
 function urlId(id) {
-  return `${urlBase}?id=${id}&appid=${appId}`
+  return `${urlBase}?id=${id}&appid=${appId}`;
 }
 
 function requestData(location) {
@@ -24,25 +23,6 @@ function requestData(location) {
       reject("Parameter 'location' must be defined.");
       return;
     }
-
-    // let url;
-
-    // if (typeof location === 'object') {
-    //   if (location.id) {
-    //     url = urlId(location.id);
-    //   } else {
-    //     location = location.city || '';
-    //   }
-    // }
-
-    // if (typeof location === 'string') {
-    //   if (location === '') {
-    //     reject("Parameter 'location' must not be empty.");
-    //     return;
-    //   }
-
-    //   url = urlLocation(location);
-    // }
 
     let url;
 
@@ -64,11 +44,12 @@ function requestData(location) {
       .then(obj => {
         if (obj.cod) {
           obj.cod = parseInt(obj.cod);
-        }        
+        }
+
         if (obj.cod === 200) {
           const snapshot = new Snapshot(obj);
-          // logger.logPretty(obj, snapshot);
           resolve(snapshot);
+
         } else {
           obj.location = location;
           reject(obj);

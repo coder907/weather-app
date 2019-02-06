@@ -14,7 +14,7 @@ export default class Location {
   }
 
   flagUrl() {
-    return `img/flags/${this.countryCode.toLowerCase()}.svg`
+    return `img/flags/${this.countryCode.toLowerCase()}.svg`;
   }
 
   equals(other) {

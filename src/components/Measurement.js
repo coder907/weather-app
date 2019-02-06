@@ -5,7 +5,7 @@ export default function Measurement(props) {
     <div className="measurement-container">
       <div className="measurement-inlinebox">
         <div className="measurement-flexbox">
-        <img
+          <img
             className="measurement-icon"
             src={iconUrl(props.icon)}
             title={props.description}

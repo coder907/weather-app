@@ -6,10 +6,10 @@ const dates = {
 export default dates;
 
 function toWeekdayMonthDay(dt) {
-  if (typeof dt === 'number' ) {
+  if (typeof dt === 'number') {
     dt = new Date(dt);
   }
-  
+
   return dt.toLocaleDateString(navigator.language, {
     weekday: 'long',
     month: 'long',
@@ -18,10 +18,10 @@ function toWeekdayMonthDay(dt) {
 }
 
 function toHourMinute24(dt) {
-  if (typeof dt === 'number' ) {
+  if (typeof dt === 'number') {
     dt = new Date(dt);
   }
-  
+
   return dt.toLocaleTimeString(navigator.language, {
     hour: 'numeric',
     minute: 'numeric',

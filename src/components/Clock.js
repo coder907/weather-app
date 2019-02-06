@@ -10,7 +10,7 @@ export default class Clock extends Component {
 
   componentDidMount() {
     this.__intervalId = window.setInterval(
-      this.__tick,
+      this.tick,
       250,
     );
   }
@@ -27,17 +27,16 @@ export default class Clock extends Component {
   }
 
   componentWillUnmount() {
-    this.__clearInterval();
+    this.clearInterval();
   }
 
-  __tick = () => {
-
+  tick = () => {
     this.setState({
       dt: new Date(),
     });
   }
 
-  __clearInterval() {
+  clearInterval() {
     if (this.__intervalId) {
       window.clearInterval(this.__intervalId);
       this.__intervalId = null;

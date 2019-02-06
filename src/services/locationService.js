@@ -1,5 +1,4 @@
 import Location from '../models/Location';
-// import logger from '../utils/logger';
 
 const locationService = {
   requestLocation,
@@ -27,7 +26,6 @@ function requestLocation() {
           undefined,
           obj.city
         );
-        // logger.logPretty(obj);
         resolve(location);
       })
       .catch(

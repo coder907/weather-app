@@ -70,6 +70,7 @@ function formatWindDirection(value) {
   if (!value) {
     return '';
   }
+
   const index = Math.floor((value / 22.5) + 0.5) % 16;
   return windDirections[index];
 }

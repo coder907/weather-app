@@ -17,15 +17,15 @@ export default class App extends Component {
   componentDidMount() {
     locationService.requestLocation()
       .then(
-        location => this.__handleSelect(location)
+        location => this.handleSelect(location)
       );
   }
 
-  __handleSelect = (location) => {
-    this.__requestData(location);
+  handleSelect = (location) => {
+    this.requestData(location);
   }
 
-  __requestData = (location) => {
+  requestData = (location) => {
     if (this.state.loading) {
       return;
     }
@@ -73,7 +73,7 @@ export default class App extends Component {
     const snapshot = this.state.snapshot;
 
     if (snapshot) {
-      this.__requestData(snapshot.location);
+      this.requestData(snapshot.location);
     }
   }
 
@@ -86,7 +86,7 @@ export default class App extends Component {
           <div className="app-flexbox">
             <Clock />
             <Search
-              onSelect={this.__handleSelect}
+              onSelect={this.handleSelect}
             />
             {
               message === null ?
