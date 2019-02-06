@@ -1,3 +1,11 @@
+## Description
+[See it on GitHub Pages.](https://coder907.github.io/weather-app/)
+
+## Dependencies
+See [package.json](package.json) for a complete list of dependencies.
+
+## React
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
