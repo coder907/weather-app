@@ -24,7 +24,7 @@ body {
 
 @media screen and (min-width: 1024px) {
   body {
-    background-image: url('/img/backgrounds/mountains1.jpg');
+    background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b');
     background-size: 100%;
   }
 }
