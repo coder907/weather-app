@@ -1,18 +1,19 @@
 import React from 'react';
 
 import dates from '../utils/dates';
+import './Refresh.css';
 
 export default function Refresh(props) {
   const measuredAtText = dates.toHourMinute24(props.updated);
 
   return (
-    <div className="update-inlinebox">
-      <div className="update-flexbox">
+    <div className="refresh-inlinebox">
+      <div className="refresh-flexbox">
         <span
-          className="update-description"
+          className="refresh-description"
         >Measured at {measuredAtText}</span>
           <img
-            className="update-icon"
+            className="refresh-icon"
             src="img/weather/wi-refresh.svg"
             title="Refresh"
             alt="Refresh"

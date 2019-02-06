@@ -1,0 +1,16 @@
+.condition-inlinebox {
+  display: inline-block;
+}
+
+.condition-flexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.condition-icon {
+  margin-right: 8px;
+}
+
+.condition-description {
+  line-height: 50px;
+}

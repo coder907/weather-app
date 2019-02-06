@@ -1,0 +1,19 @@
+.refresh-inlinebox {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.refresh-flexbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.refresh-description {
+  font-size: 0.8em;
+}
+
+.refresh-icon {
+  height: 100px;
+  margin-top: -20px;
+  cursor: pointer;
+}

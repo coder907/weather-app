@@ -69,19 +69,17 @@ export default class Search extends Component {
 
   render() {
     return (
-      <div className="search-container">
-        <AsyncSelect
-          ref={ref => { this.selectRef = ref; }}
-          components={{ Option: SearchItem }}
-          loadOptions={this.loadOptions}
-          onChange={this.onChange}
-          onKeyDown={this.onKeyDown}
-          value={null}
-          placeholder="Select city ..."
-          noOptionsMessage={this.noOptionsMessage}
-          autoFocus={true}
-        />
-      </div>
+      <AsyncSelect
+        ref={ref => { this.selectRef = ref; }}
+        components={{ Option: SearchItem }}
+        loadOptions={this.loadOptions}
+        onChange={this.onChange}
+        onKeyDown={this.onKeyDown}
+        value={null}
+        placeholder="Select city ..."
+        noOptionsMessage={this.noOptionsMessage}
+        autoFocus={true}
+      />
     );
   }
 }

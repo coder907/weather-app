@@ -1,0 +1,22 @@
+.measurement-container {
+  display: block;
+}
+
+.measurement-inlinebox {
+  display: inline-block;
+}
+
+.measurement-flexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.measurement-icon {
+  height: 30px;
+  margin-right: 8px;
+}
+
+.measurement-value {
+  line-height: 30px;
+  font-size: 1.25em;
+}

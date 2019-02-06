@@ -1,0 +1,36 @@
+.weather-flexbox-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.weather-spinner-container {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.weather-flexbox-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.weather-flexbox-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weather-flexbox-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.weather-flexbox-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

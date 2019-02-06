@@ -1,0 +1,17 @@
+.location-inlinebox {
+  display: inline-block;
+}
+
+.location-flexbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.location-city {
+  font-size: 1.5em;
+  margin-right: 16px;
+}
+
+.location-flag {
+  height: 16px;
+}

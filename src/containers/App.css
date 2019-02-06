@@ -1,0 +1,18 @@
+.app-container {
+  text-align: center;
+}
+
+.app-inlinebox {
+  display: inline-block;
+}
+
+.app-flexbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-error {
+  font-size: 1.5em;
+  margin-top: 50px;
+  max-width: 768px;
+}

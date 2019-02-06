@@ -1,6 +1,7 @@
 import React from 'react';
 
 import strings from '../utils/strings';
+import './Condition.css';
 
 export default function Condition(props) {
   const condition = props.condition;

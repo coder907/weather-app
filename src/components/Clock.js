@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import dates from '../utils/dates';
+import './Clock.css';
 
 export default class Clock extends Component {
 

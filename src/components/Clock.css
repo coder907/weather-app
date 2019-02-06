@@ -1,0 +1,12 @@
+.clock-container {
+  display: block;
+  margin-top: 20px;
+}
+
+.clock-day {
+  font-size: 2.5em;
+}
+
+.clock-hour {
+  font-size: 7.5em;
+}

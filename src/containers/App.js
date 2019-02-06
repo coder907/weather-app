@@ -5,6 +5,7 @@ import weatherService from '../services/weatherService';
 import Search from '../components/Search';
 import Clock from '../components/Clock';
 import Weather from '../components/Weather';
+import './App.css';
 
 export default class App extends Component {
 

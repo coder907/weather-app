@@ -1,12 +1,14 @@
 import React from 'react';
 
+import './Location.css';
+
 export default function Location(props) {
   const location = props.location;
   const countryName = location.countryName();
 
   return (
-    <div className="condition-flexbox">
-      <div className="condition-inlinebox">
+    <div className="location-flexbox">
+      <div className="location-inlinebox">
         <span
           className="location-city"
         >{location.city}</span>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Measurement.css';
+
 export default function Measurement(props) {
   return (
     <div className="measurement-container">
