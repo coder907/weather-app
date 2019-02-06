@@ -9,13 +9,13 @@ export default function Refresh(props) {
         <span
           className="update-description"
         >Measured at {dates.toHourMinute24(props.updated)}</span>
-        <img
-          className="update-icon"
-          src="img/weather/wi-refresh.svg"
-          title="Refresh"
-          alt="Refresh"
-          onClick={props.onRefresh}
-        />
+          <img
+            className="update-icon"
+            src="img/weather/wi-refresh.svg"
+            title="Refresh"
+            alt="Refresh"
+            onClick={props.onRefresh}
+          />
       </div>
     </div>
   );
