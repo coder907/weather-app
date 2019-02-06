@@ -27,7 +27,7 @@ function requestLocation() {
           undefined,
           obj.city
         );
-        // logger.logPretty(location);
+        // logger.logPretty(obj);
         resolve(location);
       })
       .catch(
@@ -57,14 +57,14 @@ function filterCities(filter) {
   let limit = 0;
 
   const filtered = cities.filter(city => 
-    city.name.toLowerCase().startsWith(filter.toLowerCase()) && limit++ < 5
+    city.n.toLowerCase().startsWith(filter.toLowerCase()) && limit++ < 5
   );
 
   const mapped = filtered.map(city => new Location(
-    city.geonameid,
-    countryNameToCode(city.country),
-    city.subcountry,
-    city.name,
+    city.i,
+    countryNameToCode(city.c),
+    city.r,
+    city.n,
   ));
 
   return mapped;

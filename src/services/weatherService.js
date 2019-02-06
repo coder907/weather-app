@@ -7,27 +7,57 @@ const weatherService = {
 
 export default weatherService;
 
+const urlBase = 'https://api.openweathermap.org/data/2.5/weather';
 const appId = '3ccbdea52230974079124e584dbbbb86';
 
-function url(city) {
-  return `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${appId}`
+function urlLocation(location) {
+  return `${urlBase}?q=${location}&appid=${appId}`
 }
 
-function requestData(city) {
+function urlId(id) {
+  return `${urlBase}?id=${id}&appid=${appId}`
+}
+
+function requestData(location) {
   return new Promise(function (resolve, reject) {
-    if (!city) {
-      reject("Parameter 'city' must be defined.");
+    if (!location) {
+      reject("Parameter 'location' must be defined.");
       return;
     }
 
-    city = city.trim().toLowerCase();
+    // let url;
 
-    if (city === '') {
-      reject("Parameter 'city' must not be empty.");
+    // if (typeof location === 'object') {
+    //   if (location.id) {
+    //     url = urlId(location.id);
+    //   } else {
+    //     location = location.city || '';
+    //   }
+    // }
+
+    // if (typeof location === 'string') {
+    //   if (location === '') {
+    //     reject("Parameter 'location' must not be empty.");
+    //     return;
+    //   }
+
+    //   url = urlLocation(location);
+    // }
+
+    let url;
+
+    if (location.id) {
+      url = urlId(location.id);
+
+    } else if (location.city) {
+      url = urlLocation(location.city);
+
+    } else {
+      reject("Either location id or city must be specified.");
       return;
     }
 
-    fetch(url(city))
+    fetch(url)
       .then(
         response => response.json()
       )
@@ -40,7 +70,7 @@ function requestData(city) {
           // logger.logPretty(obj, snapshot);
           resolve(snapshot);
         } else {
-          obj.city = city;
+          obj.location = location;
           reject(obj);
         }
       })

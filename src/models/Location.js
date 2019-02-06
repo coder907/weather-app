@@ -4,7 +4,7 @@ export default class Location {
 
   constructor(id, countryCode, region, city) {
     this.id = id;
-    this.countryCode = countryCode.toUpperCase();
+    this.countryCode = countryCode && countryCode.toUpperCase();
     this.region = region;
     this.city = city;
   }

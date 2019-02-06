@@ -17,26 +17,20 @@ export default class App extends Component {
   componentDidMount() {
     locationService.requestLocation()
       .then(
-        location => this.__handleShow(location && location.city)
+        location => this.__handleSelect(location)
       );
   }
 
-  __handleShow = (city) => {
-    this.__requestData(city);
+  __handleSelect = (location) => {
+    this.__requestData(location);
   }
 
-  __requestData = (city) => {
+  __requestData = (location) => {
     if (this.state.loading) {
       return;
     }
 
-    if (!city) {
-      return;
-    }
-
-    city = city.trim().toLowerCase();
-
-    if (!city) {
+    if (!location) {
       return;
     }
 
@@ -44,7 +38,7 @@ export default class App extends Component {
       loading: true,
     });
 
-    weatherService.requestData(city)
+    weatherService.requestData(location)
       .then(snapshot => {
         if (!snapshot.equals(this.state.snapshot)) {
           this.setState({
@@ -59,7 +53,7 @@ export default class App extends Component {
         if (error.cod === 404) {
           this.setState({
             snapshot: null,
-            message: `City '${error.city}' was not found.`
+            message: `City '${error.location.city}' was not found.`
           });
         } else if (error.message) {
           this.setState({
@@ -79,7 +73,7 @@ export default class App extends Component {
     const snapshot = this.state.snapshot;
 
     if (snapshot) {
-      this.__requestData(snapshot.location.city);
+      this.__requestData(snapshot.location);
     }
   }
 
@@ -92,7 +86,7 @@ export default class App extends Component {
           <div className="app-flexbox">
             <Clock />
             <Search
-              onShow={this.__handleShow}
+              onSelect={this.__handleSelect}
             />
             {
               message === null ?
