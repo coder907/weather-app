@@ -6,6 +6,7 @@ import Location from './Location';
 import Conditions from './Conditions';
 import Measurements from './Measurements';
 import Refresh from './Refresh';
+
 import './Weather.css';
 
 export default class Weather extends Component {

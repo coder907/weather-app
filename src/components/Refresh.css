@@ -17,3 +17,9 @@
   margin-top: -20px;
   cursor: pointer;
 }
+
+.refresh-icon-pressed {
+  position: relative;
+  left: 2px;
+  top: 2px;
+}

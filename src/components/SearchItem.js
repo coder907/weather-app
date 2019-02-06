@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Option from 'react-select/lib/components/Option';
+
 import './SearchItem.css';
 
 const SearchItem = (props) => (
